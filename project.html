@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SuperCars Hub</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      font-family: 'Segoe UI', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    /* Navigation */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #111;
+      padding: 15px 30px;
+      color: #fff;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      background: url('https://via.placeholder.com/1200x400') no-repeat center center/cover;
+      color: white;
+    }
+
+    .hero h2 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .hero button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: red;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Filters */
+    .filters {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .filters button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      border: none;
+      background-color: #444;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .filters button:hover {
+      background-color: #666;
+    }
+
+    /* Car List */
+    .car-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 0 20px 40px;
+    }
+
+    .car-card {
+      width: 300px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .car-card:hover {
+      transform: scale(1.03);
+    }
+
+    .car-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .car-card h3 {
+      padding: 15px;
+      font-size: 20px;
+    }
+
+    .car-card p {
+      padding: 0 15px 15px;
+      font-size: 16px;
+      color: #666;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #111;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <h1>SuperCars Hub</h1>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Cars</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="hero">
+      <h2>Find Your Dream Car</h2>
+      <button onclick="scrollToCars()">Browse Cars</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="filters">
+      <button onclick="filterCars('all')">All</button>
+      <button onclick="filterCars('sedan')">Sedan</button>
+      <button onclick="filterCars('suv')">SUV</button>
+      <button onclick="filterCars('sports')">Sports</button>
+    </section>
+
+    <section class="car-list" id="carList">
+      <div class="car-card" data-type="sedan">
+        <img src="https://thumbs.dreamstime.com/b/gaziveren-cyprus-black-bmw-decorated-newlyweds-car-adorned-just-married-sign-ready-wedding-celebration-symbolizing-402060512.jpg" alt="Sedan Car">
+        <h3>Luxury Sedan</h3>
+        <p>$30,000</p>
+      </div>
+      <div class="car-card" data-type="suv">
+        <img src="https://images.pexels.com/photos/104401/pexels-photo-104401.jpeg" alt="SUV Car">
+        <h3>Family SUV</h3>
+        <p>$40,000</p>
+      </div>
+      <div class="car-card" data-type="sports">
+        <img src="https://t3.ftcdn.net/jpg/06/83/94/28/360_F_683942890_c2GjYVRjPh9Wu1YYSqTf8M65ystdhpBR.jpg" alt="Sports Car">
+        <h3>Speedster GT</h3>
+        <p>$70,000</p>
+      </div>
+      <div class="car-card" data-type="sports">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQC46EoTmqNtTV2wsUogbHgqw14OjickJDA0w&s" alt="Sports Car">
+        <h3>Thunderbolt</h3>
+        <p>$85,000</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 SuperCars Hub. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function filterCars(type) {
+      const cars = document.querySelectorAll('.car-card');
+      cars.forEach(car => {
+        if (type === 'all' || car.dataset.type === type) {
+          car.style.display = 'block';
+        } else {
+          car.style.display = 'none';
+        }
+      });
+    }
+
+    function scrollToCars() {
+      document.getElementById('carList').scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
